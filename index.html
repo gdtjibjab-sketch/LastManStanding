@@ -28,6 +28,7 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -72,21 +73,12 @@
     }
 
     .brand-logo {
-  width: auto;
-  height: 48px;
+      width: auto;
+      height: 48px;
       object-fit: contain;
       border-radius: 14px;
       flex: 0 0 auto;
     }
-
-    .brand-name {
-      font-size: 25px;
-      font-weight: 900;
-      letter-spacing: .03em;
-      white-space: nowrap;
-    }
-
-    .brand-name span { color: #fff; }
 
     .nav-center {
       display: flex;
@@ -204,7 +196,7 @@
     .hero-copy {
       padding: 56px 46px 40px;
       position: relative;
-      z-index: 2;
+      z-index: 3;
     }
 
     .eyebrow {
@@ -332,9 +324,7 @@
       position: relative;
       min-height: 720px;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: block;
     }
 
     .hero-stadium {
@@ -348,112 +338,19 @@
         url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
       opacity: .28;
       filter: saturate(.85);
-    }
-
-.hero-mascot {
-  position: absolute;
-  right: 40px;
-  bottom: 140px;
-  width: min(520px, 52%);
-  height: auto;
-  max-height: 62%;
-  object-fit: contain;
-  object-position: right center;
-  filter: drop-shadow(0 26px 52px rgba(0,0,0,.46));
-  z-index: 2;
-}
-
-    .hero-banner {
-      position: absolute;
-      right: 34px;
-      top: 90px;
-      width: 170px;
-      height: 330px;
-      border-radius: 18px;
-      background: linear-gradient(180deg, rgba(7,16,31,.9) 0%, rgba(10,23,47,.82) 100%);
-      border: 1px solid rgba(255,122,0,.45);
-      box-shadow: 0 20px 35px rgba(0,0,0,.28);
-      transform: perspective(700px) rotateY(-18deg);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
       z-index: 1;
     }
 
-    .hero-banner::before,
-    .hero-banner::after {
-      content: "";
+    .hero-mascot {
       position: absolute;
-      top: -16px;
-      width: 8px;
-      height: 40px;
-      background: linear-gradient(180deg, #a55c24 0%, #7c4518 100%);
-      border-radius: 8px;
+      right: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center right;
+      z-index: 2;
     }
-
-    .hero-banner::before { left: 18px; }
-    .hero-banner::after { right: 18px; }
-
-    .hero-banner .banner-text {
-      text-align: center;
-      font-size: 36px;
-      line-height: .96;
-      text-transform: uppercase;
-      font-weight: 1000;
-      letter-spacing: -.03em;
-      width: 120px;
-    }
-
-    .hero-banner .banner-text span {
-      color: var(--orange-2);
-    }
-
-    .hero-banner .trophy {
-      font-size: 70px;
-      line-height: 1;
-    }
-
-    .hero-prize {
-      position: absolute;
-      left: 50%;
-      bottom: 48px;
-      transform: translateX(-6%);
-      width: min(530px, calc(100% - 48px));
-      z-index: 3;
-      border-radius: 28px;
-      background: linear-gradient(180deg, rgba(12,23,44,.96), rgba(10,18,33,.96));
-      border: 2px solid rgba(255,122,0,.75);
-      box-shadow: 0 26px 55px rgba(0,0,0,.36), inset 0 0 0 1px rgba(255,255,255,.05);
-      padding: 20px 28px 18px;
-      text-align: center;
-    }
-
-    .hero-prize .small {
-      font-size: 18px;
-      text-transform: uppercase;
-      font-weight: 900;
-      color: #fff3df;
-    }
-
-    .hero-prize .big {
-      font-size: clamp(64px, 7vw, 92px);
-      line-height: .9;
-      font-weight: 1000;
-      color: var(--orange-2);
-      letter-spacing: -.04em;
-      margin: 4px 0 0;
-    }
-
-    .hero-prize .sub {
-      margin-top: 8px;
-      font-size: 24px;
-      text-transform: uppercase;
-      font-weight: 900;
-    }
-
-    .hero-prize .sub span { color: var(--orange-2); }
 
     .stats-row {
       margin-top: 18px;
@@ -730,14 +627,14 @@
         url('https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
     }
 
-.telegram-art img {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
+    .telegram-art img {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
 
     .telegram-copy {
       padding: 26px 24px;
@@ -951,15 +848,18 @@
       .hero-grid { grid-template-columns: 1fr; }
       .hero-copy { padding-bottom: 20px; }
       .hero-right { min-height: 640px; }
- .hero-mascot {
-  right: 24px;
-  bottom: 130px;
-  width: min(460px, 58%);
-  max-height: 56%;
-  transform: none;
-}
-      .hero-banner { right: 24px; top: 62px; }
-      .hero-prize { left: 50%; transform: translateX(-50%); }
+
+      .hero-mascot {
+        right: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        max-height: none;
+        transform: none;
+        object-fit: cover;
+        object-position: center;
+      }
+
       .stats-row { grid-template-columns: repeat(2, 1fr); }
       .work-grid { grid-template-columns: repeat(2, 1fr); }
       .prize-grid { grid-template-columns: 1fr; }
@@ -979,13 +879,6 @@
       .btn { width: 100%; }
       .cta-row { display: grid; grid-template-columns: 1fr; }
       .hero-right { min-height: 540px; }
-      .hero-banner { width: 120px; height: 230px; top: 30px; right: 10px; }
-      .hero-banner .banner-text { font-size: 24px; width: 84px; }
-      .hero-banner .trophy { font-size: 44px; }
-      .hero-prize { bottom: 18px; padding: 14px 16px; border-radius: 20px; }
-      .hero-prize .small { font-size: 14px; }
-      .hero-prize .big { font-size: clamp(44px, 12vw, 68px); }
-      .hero-prize .sub { font-size: 18px; }
       .stats-row { grid-template-columns: 1fr; }
       .stat + .stat::before { display: none; }
       .section-title { font-size: 32px; }
@@ -1000,20 +893,25 @@
     @media (max-width: 560px) {
       .container { width: min(var(--max), calc(100% - 16px)); }
       .nav { min-height: 66px; }
-      .brand-logo { width: 44px; height: 44px; }
-      .brand-name { font-size: 22px; }
+      .brand-logo { height: 36px; width: auto; }
       .deposit { padding: 0 12px; min-height: 40px; font-size: 14px; }
       .icon-btn { width: 40px; height: 40px; border-radius: 10px; }
       .desktop-only { display: none; }
       .mobile-only { display: inline-flex; }
       .hero-copy { padding-left: 16px; padding-right: 16px; }
       .hero-right { min-height: 440px; }
-    .hero-mascot {
-  right: 10px;
-  bottom: 110px;
-  width: min(320px, 78%);
-  max-height: 48%;
-}
+
+      .hero-mascot {
+        width: 100%;
+        height: 100%;
+        right: 0;
+        top: 0;
+        bottom: auto;
+        max-height: none;
+        object-fit: cover;
+        object-position: 65% center;
+      }
+
       .feature-item { grid-template-columns: 40px 1fr; gap: 12px; }
       .feature-icon { width: 40px; height: 40px; font-size: 20px; }
       .prize-main { grid-template-columns: 1fr; }
@@ -1053,13 +951,11 @@
         <div class="hero-grid">
           <div class="hero-copy">
             <div class="eyebrow">One Pick. Every Week.</div>
-           <h1>
-  <span class="stroke">Last Man</span>
-  <span class="fill">Standing</span>
-</h1>
-<p class="hero-sub">Free to play. Outlast everyone.</p>
+            <h1>
+              <span class="stroke">Last Man</span>
+              <span class="fill">Standing</span>
             </h1>
-            <p class="hero-sub">Outlast everyone. Win life-changing prizes.</p>
+            <p class="hero-sub">Free to play. Outlast everyone.</p>
 
             <div class="feature-list">
               <div class="feature-item">
@@ -1095,19 +991,7 @@
 
           <div class="hero-right">
             <div class="hero-stadium"></div>
-
-            <div class="hero-banner">
-              <div class="banner-text">Last Man <span>Standing</span></div>
-              <div class="trophy">🏆</div>
-            </div>
-
             <img class="hero-mascot" src="/hero.png" alt="Toshi Last Man Standing Hero" />
-
-            <div class="hero-prize">
-              <div class="small">World Cup Mega Prize</div>
-              <div class="big">$100,000</div>
-              <div class="sub">+ Weekly <span>$5,000</span> Prizes</div>
-            </div>
           </div>
         </div>
       </section>
@@ -1205,7 +1089,7 @@
       <section class="panel telegram-panel">
         <div class="telegram-left">
           <div class="telegram-art">
-           <img src="/telegram.png" alt="Join Telegram" />
+            <img src="/telegram.png" alt="Join Telegram" />
           </div>
           <div class="telegram-copy">
             <h3>Talk Football. <span>Survive Together.</span></h3>
@@ -1271,7 +1155,6 @@
       <footer class="site-footer">
         <div class="footer-brand">
           <img src="/logo.png" alt="Toshi Last Man Standing" style="width: 120px;" />
-          <span>TOSHI.BET</span>
         </div>
 
         <div class="footer-links">
