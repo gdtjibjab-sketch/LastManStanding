@@ -354,18 +354,16 @@ padding: 10px 10px 10px 0;
   object-position: center center;
   z-index: 2;
 }
-
-    .stats-row {
-      margin-top: 18px;
-      background: linear-gradient(180deg, rgba(16,27,49,.92), rgba(12,22,41,.92));
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 24px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
+    
+.stat {
+  flex: 1;
+  min-width: 220px;
+  padding: 26px 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+}
 
 .stat {
   padding: 28px 24px 24px;
@@ -380,15 +378,15 @@ padding: 10px 10px 10px 0;
   min-width: 0;
 }
 
-    .stat + .stat::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 22px;
-      bottom: 22px;
-      width: 1px;
-      background: rgba(255,255,255,.1);
-    }
+.stat:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 22px;
+  bottom: 22px;
+  width: 1px;
+  background: rgba(255,255,255,.1);
+}
 
     .stat-icon {
       font-size: 34px;
@@ -397,12 +395,13 @@ padding: 10px 10px 10px 0;
       flex: 0 0 auto;
     }
 
-    .stat-value {
-      font-size: 24px;
-      font-weight: 1000;
-      line-height: 1;
-      margin-bottom: 6px;
-    }
+.stat-value {
+  font-size: 22px;
+  font-weight: 1000;
+  line-height: 1.1;
+  margin-bottom: 6px;
+  white-space: nowrap;
+}
 
 .stat-label {
   font-size: 14px;
@@ -1019,13 +1018,13 @@ padding: 10px 10px 10px 0;
             <div class="stat-label">Total Prize Pool</div>
           </div>
         </div>
-        <div class="stat">
-          <div class="stat-icon">🛡</div>
-          <div>
-            <div class="stat-value">Free To Play</div>
-            <div class="stat-note">No deposit. No wagering.</div>
-          </div>
-        </div>
+    <div class="stat">
+  <div class="stat-icon">🛡</div>
+  <div>
+    <div class="stat-value">Free To Play</div>
+    <div class="stat-note">No deposit. No wagering.</div>
+  </div>
+</div>
       </section>
 
       <h2 id="how-it-works" class="section-title">How Last Man Standing Works</h2>
