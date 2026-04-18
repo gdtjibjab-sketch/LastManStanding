@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toshi.bet — Last Man Standing</title>
+  <meta name="description" content="One pick every week. Outlast everyone. Win life-changing prizes in Toshi.bet Last Man Standing." />
+  <style>
+    :root {
+      --bg: #071122;
+      --bg-2: #0b1830;
+      --panel: #101c33;
+      --panel-2: #0d172b;
+      --line: rgba(255,255,255,0.12);
+      --line-soft: rgba(255,255,255,0.08);
+      --text: #f5f7fb;
+      --muted: #aab4c8;
+      --orange: #ff7a00;
+      --orange-2: #ff9a2f;
+      --orange-3: #ffb25b;
+      --blue-btn: #4e8ef7;
+      --green: #3bd36b;
+      --shadow: 0 16px 50px rgba(0,0,0,.34);
+      --radius: 22px;
+      --radius-lg: 28px;
+      --max: 1320px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 70% 10%, rgba(44,92,194,.22), transparent 24%),
+        radial-gradient(circle at 20% 20%, rgba(255,122,0,.08), transparent 18%),
+        linear-gradient(180deg, #0a1325 0%, #081121 100%);
+      min-height: 100vh;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(var(--max), calc(100% - 28px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(9, 18, 35, 0.92);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 58px;
+      height: 58px;
+      object-fit: contain;
+      border-radius: 14px;
+      flex: 0 0 auto;
+    }
+
+    .brand-name {
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: .03em;
+      white-space: nowrap;
+    }
+
+    .brand-name span { color: #fff; }
+
+    .nav-center {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav-link {
+      font-size: 15px;
+      color: #d9e2f0;
+      font-weight: 700;
+      padding: 26px 0 18px;
+      border-bottom: 3px solid transparent;
+      transition: .18s ease;
+    }
+
+    .nav-link.active {
+      color: var(--orange-2);
+      border-color: var(--orange);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .mini-balance {
+      background: #091324;
+      border: 1px solid var(--line-soft);
+      border-radius: 10px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      font-weight: 900;
+      gap: 6px;
+      color: #fff;
+    }
+
+    .coin {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: #76e44d;
+      color: #0b2310;
+      font-size: 12px;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+    }
+
+    .deposit {
+      background: linear-gradient(180deg, #ff9627 0%, #ff7a00 100%);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 10px;
+      min-height: 44px;
+      padding: 0 18px;
+      display: flex;
+      align-items: center;
+      font-weight: 900;
+      box-shadow: 0 10px 24px rgba(255,122,0,.24);
+    }
+
+    .icon-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .page-wrap {
+      padding: 22px 0 34px;
+    }
+
+    .hero {
+      background:
+        linear-gradient(90deg, rgba(6,11,22,.96) 0%, rgba(7,18,35,.88) 34%, rgba(7,18,35,.36) 64%),
+        radial-gradient(circle at 78% 30%, rgba(255,122,0,.18), transparent 18%),
+        radial-gradient(circle at 68% 10%, rgba(68,119,255,.28), transparent 24%),
+        linear-gradient(180deg, #0c1629 0%, #081222 100%);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 84% 42%, rgba(255,255,255,.12), transparent 11%),
+        radial-gradient(circle at 86% 20%, rgba(255,255,255,.08), transparent 18%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      min-height: 720px;
+      position: relative;
+    }
+
+    .hero-copy {
+      padding: 56px 46px 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      color: var(--orange-2);
+      font-size: 22px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+      margin: 0 0 10px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(72px, 8vw, 122px);
+      line-height: .88;
+      text-transform: uppercase;
+      font-weight: 1000;
+      letter-spacing: -.04em;
+      max-width: 780px;
+    }
+
+    .hero h1 .stroke {
+      color: #f7f7f8;
+      display: block;
+      text-shadow: 0 3px 0 rgba(0,0,0,.15);
+    }
+
+    .hero h1 .fill {
+      display: block;
+      color: transparent;
+      background: linear-gradient(180deg, #ffb45e 0%, #ff7a00 68%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      margin: 16px 0 22px;
+      color: #f3f5fa;
+      font-size: 22px;
+      font-weight: 700;
+      max-width: 560px;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 16px;
+      margin: 28px 0 28px;
+      max-width: 540px;
+    }
+
+    .feature-item {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 2px solid rgba(255,122,0,.8);
+      display: grid;
+      place-items: center;
+      color: var(--orange-2);
+      font-size: 22px;
+      background: rgba(255,255,255,.03);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.04);
+    }
+
+    .feature-title {
+      color: var(--orange-2);
+      font-size: 17px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .feature-text {
+      color: #d5dded;
+      font-size: 15px;
+      line-height: 1.4;
+      max-width: 420px;
+    }
+
+    .cta-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .btn {
+      min-height: 58px;
+      border-radius: 12px;
+      padding: 0 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 18px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .01em;
+      transition: .18s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: linear-gradient(180deg, #ff9a2b 0%, #ff7a00 100%);
+      color: #fff;
+      box-shadow: 0 18px 34px rgba(255,122,0,.22);
+    }
+
+    .btn-secondary {
+      background: rgba(8,17,32,.72);
+      border-color: rgba(255,255,255,.14);
+      color: #fff;
+    }
+
+    .hero-right {
+      position: relative;
+      min-height: 720px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-stadium {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 62% 16%, rgba(255,255,255,.22), transparent 18%),
+        radial-gradient(circle at 50% 22%, rgba(255,255,255,.14), transparent 22%),
+        linear-gradient(180deg, rgba(35,79,149,.75), rgba(7,19,38,.08) 36%),
+        linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.28)),
+        url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      opacity: .28;
+      filter: saturate(.85);
+    }
+
+    .hero-mascot {
+      position: absolute;
+      right: 10px;
+      bottom: 32px;
+      width: min(690px, 100%);
+      max-height: 90%;
+      object-fit: contain;
+      filter: drop-shadow(0 26px 52px rgba(0,0,0,.46));
+      z-index: 2;
+    }
+
+    .hero-banner {
+      position: absolute;
+      right: 34px;
+      top: 90px;
+      width: 170px;
+      height: 330px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(7,16,31,.9) 0%, rgba(10,23,47,.82) 100%);
+      border: 1px solid rgba(255,122,0,.45);
+      box-shadow: 0 20px 35px rgba(0,0,0,.28);
+      transform: perspective(700px) rotateY(-18deg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      z-index: 1;
+    }
+
+    .hero-banner::before,
+    .hero-banner::after {
+      content: "";
+      position: absolute;
+      top: -16px;
+      width: 8px;
+      height: 40px;
+      background: linear-gradient(180deg, #a55c24 0%, #7c4518 100%);
+      border-radius: 8px;
+    }
+
+    .hero-banner::before { left: 18px; }
+    .hero-banner::after { right: 18px; }
+
+    .hero-banner .banner-text {
+      text-align: center;
+      font-size: 36px;
+      line-height: .96;
+      text-transform: uppercase;
+      font-weight: 1000;
+      letter-spacing: -.03em;
+      width: 120px;
+    }
+
+    .hero-banner .banner-text span {
+      color: var(--orange-2);
+    }
+
+    .hero-banner .trophy {
+      font-size: 70px;
+      line-height: 1;
+    }
+
+    .hero-prize {
+      position: absolute;
+      left: 50%;
+      bottom: 48px;
+      transform: translateX(-6%);
+      width: min(530px, calc(100% - 48px));
+      z-index: 3;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(12,23,44,.96), rgba(10,18,33,.96));
+      border: 2px solid rgba(255,122,0,.75);
+      box-shadow: 0 26px 55px rgba(0,0,0,.36), inset 0 0 0 1px rgba(255,255,255,.05);
+      padding: 20px 28px 18px;
+      text-align: center;
+    }
+
+    .hero-prize .small {
+      font-size: 18px;
+      text-transform: uppercase;
+      font-weight: 900;
+      color: #fff3df;
+    }
+
+    .hero-prize .big {
+      font-size: clamp(64px, 7vw, 92px);
+      line-height: .9;
+      font-weight: 1000;
+      color: var(--orange-2);
+      letter-spacing: -.04em;
+      margin: 4px 0 0;
+    }
+
+    .hero-prize .sub {
+      margin-top: 8px;
+      font-size: 24px;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    .hero-prize .sub span { color: var(--orange-2); }
+
+    .stats-row {
+      margin-top: 18px;
+      background: linear-gradient(180deg, rgba(16,27,49,.92), rgba(12,22,41,.92));
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 24px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .stat {
+      padding: 28px 24px 24px;
+      position: relative;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      min-height: 104px;
+    }
+
+    .stat + .stat::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 22px;
+      bottom: 22px;
+      width: 1px;
+      background: rgba(255,255,255,.1);
+    }
+
+    .stat-icon {
+      font-size: 34px;
+      color: var(--orange-2);
+      line-height: 1;
+      flex: 0 0 auto;
+    }
+
+    .stat-value {
+      font-size: 24px;
+      font-weight: 1000;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      text-transform: uppercase;
+      color: #d7dfef;
+      letter-spacing: .03em;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .stat-note {
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .section-title {
+      text-align: center;
+      margin: 20px 0 14px;
+      font-size: 44px;
+      line-height: 1;
+      font-weight: 1000;
+      text-transform: uppercase;
+      letter-spacing: -.03em;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .step-card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(16,28,51,.96), rgba(12,20,38,.96));
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 20px;
+      padding: 26px 22px 24px;
+      min-height: 250px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .step-number {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #ff9a2b 0%, #ff7a00 100%);
+      color: #06111f;
+      display: grid;
+      place-items: center;
+      font-weight: 1000;
+      font-size: 24px;
+    }
+
+    .step-icon {
+      font-size: 70px;
+      line-height: 1;
+      color: var(--orange-2);
+      margin: 28px 0 18px;
+    }
+
+    .step-title {
+      font-size: 18px;
+      text-transform: uppercase;
+      font-weight: 1000;
+      margin-bottom: 10px;
+    }
+
+    .step-text {
+      color: #d6ddec;
+      font-size: 15px;
+      line-height: 1.45;
+      max-width: 230px;
+      margin: 0 auto;
+    }
+
+    .step-arrow {
+      position: absolute;
+      right: -12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 60px;
+      color: var(--orange);
+      line-height: 1;
+      font-weight: 900;
+      z-index: 2;
+    }
+
+    .prize-grid {
+      display: grid;
+      grid-template-columns: 1.3fr .85fr .85fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(13,24,44,.96), rgba(10,18,33,.96));
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .prize-main {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 10px;
+      align-items: center;
+      min-height: 245px;
+      border-color: rgba(255,122,0,.48);
+    }
+
+    .prize-image {
+      height: 100%;
+      min-height: 180px;
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at 40% 32%, rgba(255,196,95,.3), transparent 18%),
+        linear-gradient(180deg, rgba(255,122,0,.12), rgba(0,0,0,0)),
+        url('https://images.unsplash.com/photo-1518546305927-5a555bb7020d?auto=format&fit=crop&w=1000&q=80') center/cover no-repeat;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .prize-image::after {
+      content: "🏆";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 150px;
+      text-shadow: 0 10px 30px rgba(0,0,0,.45);
+    }
+
+    .prize-copy h3,
+    .money-box h3,
+    .faq h3,
+    .telegram-copy h3 {
+      margin: 0;
+      text-transform: uppercase;
+      font-weight: 1000;
+      letter-spacing: -.02em;
+    }
+
+    .prize-copy h3 {
+      color: var(--orange-2);
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .prize-copy p,
+    .money-box p,
+    .telegram-copy p,
+    .faq-answer {
+      color: #d5ddec;
+      font-size: 15px;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .money-box {
+      padding: 26px 22px;
+      min-height: 245px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .money-box h3 {
+      font-size: 18px;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+
+    .money-number {
+      font-size: clamp(54px, 5vw, 78px);
+      line-height: .92;
+      font-weight: 1000;
+      color: var(--orange-2);
+      letter-spacing: -.04em;
+      margin-bottom: 14px;
+    }
+
+    .money-box .mini-row {
+      margin-top: 20px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .money-box .mini-icon {
+      font-size: 26px;
+      color: #66738d;
+    }
+
+    .telegram-panel {
+      margin-top: 14px;
+      padding: 0;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      border-color: rgba(79,162,255,.18);
+    }
+
+    .telegram-left {
+      min-height: 265px;
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 0;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(31,84,162,.18), rgba(255,122,0,.06)),
+        linear-gradient(180deg, rgba(9,17,31,.88), rgba(10,19,35,.9));
+    }
+
+    .telegram-art {
+      position: relative;
+      min-height: 100%;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,122,0,.18), transparent 18%),
+        linear-gradient(180deg, rgba(48,111,196,.2), rgba(0,0,0,0)),
+        url('https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
+    }
+
+    .telegram-art img {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: left bottom;
+      filter: drop-shadow(0 18px 30px rgba(0,0,0,.4));
+    }
+
+    .telegram-copy {
+      padding: 26px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .telegram-copy h3 {
+      font-size: 30px;
+      line-height: .94;
+    }
+
+    .telegram-copy h3 span {
+      color: var(--orange-2);
+      display: block;
+    }
+
+    .telegram-chat {
+      padding: 16px;
+      background: linear-gradient(180deg, rgba(10,18,33,.92), rgba(8,15,28,.94));
+      display: flex;
+      align-items: center;
+    }
+
+    .chat-box {
+      width: 100%;
+      background: #0b1629;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.02);
+    }
+
+    .chat-top {
+      padding: 10px 14px;
+      background: rgba(255,255,255,.03);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .chat-top small {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .chat-body {
+      padding: 14px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .bubble {
+      max-width: 88%;
+      border-radius: 14px;
+      padding: 10px 12px;
+      font-size: 14px;
+      line-height: 1.35;
+      color: #fff;
+      background: #17263f;
+      border: 1px solid rgba(255,255,255,.06);
+    }
+
+    .bubble.mine {
+      justify-self: end;
+      background: #4f7c25;
+      border-color: rgba(255,255,255,.08);
+    }
+
+    .bubble .time {
+      display: block;
+      color: rgba(255,255,255,.6);
+      font-size: 11px;
+      margin-top: 4px;
+      text-align: right;
+    }
+
+    .faq {
+      margin-top: 14px;
+      padding: 24px 24px 18px;
+    }
+
+    .faq h3 {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    .faq-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .faq-item {
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.02);
+      border-radius: 16px;
+      padding: 16px 16px 15px;
+    }
+
+    .faq-question {
+      color: #fff;
+      font-size: 17px;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .footer-cta {
+      margin-top: 14px;
+      border-radius: 24px;
+      background:
+        linear-gradient(90deg, rgba(14,23,41,.96) 0%, rgba(11,19,35,.92) 42%, rgba(16,31,57,.94) 100%),
+        radial-gradient(circle at 82% 50%, rgba(255,122,0,.14), transparent 16%);
+      border: 1px solid rgba(255,122,0,.45);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .footer-cta-inner {
+      padding: 26px 26px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .footer-cta h2 {
+      margin: 0;
+      font-size: clamp(40px, 4.5vw, 72px);
+      line-height: .94;
+      text-transform: uppercase;
+      letter-spacing: -.03em;
+      font-weight: 1000;
+    }
+
+    .footer-cta h2 span {
+      color: var(--orange-2);
+      display: block;
+    }
+
+    .footer-cta p {
+      margin: 10px 0 0;
+      color: #edf1f9;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .footer-cta .btn-wrap {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .site-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 6px 12px;
+      color: #cfd7e6;
+      font-size: 14px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      font-size: 22px;
+    }
+
+    .footer-brand img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+
+    .footer-links,
+    .footer-socials {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a { color: #d1d9e9; font-weight: 600; }
+
+    .social {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+      background: rgba(255,255,255,.04);
+    }
+
+    .mobile-only { display: none; }
+
+    @media (max-width: 1200px) {
+      .nav-center { gap: 22px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-copy { padding-bottom: 20px; }
+      .hero-right { min-height: 640px; }
+      .hero-mascot { right: 50%; transform: translateX(50%); width: min(620px, 90%); }
+      .hero-banner { right: 24px; top: 62px; }
+      .hero-prize { left: 50%; transform: translateX(-50%); }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .work-grid { grid-template-columns: repeat(2, 1fr); }
+      .prize-grid { grid-template-columns: 1fr; }
+      .telegram-panel { grid-template-columns: 1fr; }
+      .footer-cta-inner { grid-template-columns: 1fr; }
+      .footer-cta .btn-wrap { justify-content: flex-start; }
+    }
+
+    @media (max-width: 860px) {
+      .nav-center { display: none; }
+      .mini-balance { display: none; }
+      .hero-copy { padding: 34px 22px 16px; }
+      .hero h1 { font-size: clamp(56px, 15vw, 92px); }
+      .eyebrow { font-size: 18px; }
+      .hero-sub { font-size: 18px; }
+      .feature-list { gap: 14px; }
+      .btn { width: 100%; }
+      .cta-row { display: grid; grid-template-columns: 1fr; }
+      .hero-right { min-height: 540px; }
+      .hero-banner { width: 120px; height: 230px; top: 30px; right: 10px; }
+      .hero-banner .banner-text { font-size: 24px; width: 84px; }
+      .hero-banner .trophy { font-size: 44px; }
+      .hero-prize { bottom: 18px; padding: 14px 16px; border-radius: 20px; }
+      .hero-prize .small { font-size: 14px; }
+      .hero-prize .big { font-size: clamp(44px, 12vw, 68px); }
+      .hero-prize .sub { font-size: 18px; }
+      .stats-row { grid-template-columns: 1fr; }
+      .stat + .stat::before { display: none; }
+      .section-title { font-size: 32px; }
+      .work-grid { grid-template-columns: 1fr; }
+      .step-arrow { display: none; }
+      .telegram-left { grid-template-columns: 1fr; }
+      .telegram-art { min-height: 260px; }
+      .faq { padding: 20px 16px 16px; }
+      .site-footer { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 560px) {
+      .container { width: min(var(--max), calc(100% - 16px)); }
+      .nav { min-height: 66px; }
+      .brand-logo { width: 44px; height: 44px; }
+      .brand-name { font-size: 22px; }
+      .deposit { padding: 0 12px; min-height: 40px; font-size: 14px; }
+      .icon-btn { width: 40px; height: 40px; border-radius: 10px; }
+      .desktop-only { display: none; }
+      .mobile-only { display: inline-flex; }
+      .hero-copy { padding-left: 16px; padding-right: 16px; }
+      .hero-right { min-height: 440px; }
+      .hero-mascot { width: min(500px, 96%); bottom: 58px; }
+      .feature-item { grid-template-columns: 40px 1fr; gap: 12px; }
+      .feature-icon { width: 40px; height: 40px; font-size: 20px; }
+      .prize-main { grid-template-columns: 1fr; }
+      .prize-image { min-height: 160px; }
+      .footer-links { gap: 14px; }
+      .footer-socials { gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="https://toshi.bet/last-man-standing">
+        <img class="brand-logo" src="https://toshi.bet/favicon.ico" alt="Toshi.bet logo" />
+        <div class="brand-name">TOSHI.BET</div>
+      </a>
+
+      <nav class="nav-center">
+        <a class="nav-link active" href="#top">Last Man Standing</a>
+        <a class="nav-link" href="#how-it-works">How It Works</a>
+        <a class="nav-link" href="#prizes">Prizes</a>
+        <a class="nav-link" href="#faq">FAQ</a>
+      </nav>
+
+      <div class="nav-right">
+        <div class="mini-balance">0.00 <span class="coin">$</span></div>
+        <a class="deposit" href="https://toshi.bet/last-man-standing">Deposit</a>
+        <a class="icon-btn desktop-only" href="https://toshi.bet/last-man-standing" aria-label="Search">⌕</a>
+        <a class="icon-btn desktop-only" href="https://toshi.bet/last-man-standing" aria-label="Account">👤</a>
+        <a class="icon-btn mobile-only" href="#" aria-label="Menu">☰</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="page-wrap">
+    <div class="container">
+      <section class="hero">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">One Pick. Every Week.</div>
+            <h1>
+              <span class="stroke">Last Man</span>
+              <span class="fill">Standing</span>
+            </h1>
+            <p class="hero-sub">Outlast everyone. Win life-changing prizes.</p>
+
+            <div class="feature-list">
+              <div class="feature-item">
+                <div class="feature-icon">⌖</div>
+                <div>
+                  <div class="feature-title">Pick One Team</div>
+                  <div class="feature-text">Choose one team each week. You can only use a team once.</div>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-icon">🛡</div>
+                <div>
+                  <div class="feature-title">Survive & Advance</div>
+                  <div class="feature-text">Win = advance. Draw or loss = out. Stay alive week after week.</div>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-icon">🏆</div>
+                <div>
+                  <div class="feature-title">Be The Last One</div>
+                  <div class="feature-text">Be the last player standing and win the jackpot.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cta-row">
+              <a class="btn btn-primary" href="https://toshi.bet/last-man-standing">Play Now For Free →</a>
+              <a class="btn btn-secondary" href="#how-it-works">How It Works ▶</a>
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <div class="hero-stadium"></div>
+
+            <div class="hero-banner">
+              <div class="banner-text">Last Man <span>Standing</span></div>
+              <div class="trophy">🏆</div>
+            </div>
+
+            <img class="hero-mascot" src="https://toshi.bet/favicon.ico" alt="Toshi mascot" />
+
+            <div class="hero-prize">
+              <div class="small">World Cup Mega Prize</div>
+              <div class="big">$100,000</div>
+              <div class="sub">+ Weekly <span>$5,000</span> Prizes</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats-row">
+        <div class="stat">
+          <div class="stat-icon">👥</div>
+          <div>
+            <div class="stat-value">12,458+</div>
+            <div class="stat-label">Players Joined</div>
+          </div>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">🗓</div>
+          <div>
+            <div class="stat-value">53</div>
+            <div class="stat-label">Days To World Cup</div>
+          </div>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">🏆</div>
+          <div>
+            <div class="stat-value">$100,000+</div>
+            <div class="stat-label">Total Prize Pool</div>
+          </div>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">🛡</div>
+          <div>
+            <div class="stat-value">Free To Play</div>
+            <div class="stat-note">No deposit. No wagering.</div>
+          </div>
+        </div>
+      </section>
+
+      <h2 id="how-it-works" class="section-title">How Last Man Standing Works</h2>
+
+      <section class="work-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <div class="step-icon">👥</div>
+          <div class="step-title">Join The Arena</div>
+          <div class="step-text">Enter for free and compete against 100+ players.</div>
+          <div class="step-arrow">›</div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <div class="step-icon">👕</div>
+          <div class="step-title">Pick Your Team</div>
+          <div class="step-text">Pick one team you think will win this week.</div>
+          <div class="step-arrow">›</div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <div class="step-icon">✔</div>
+          <div class="step-title">Survive Each Week</div>
+          <div class="step-text">If your team wins, you advance. Draw or loss, you're out.</div>
+          <div class="step-arrow">›</div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <div class="step-icon">🏆</div>
+          <div class="step-title">Be The Last One</div>
+          <div class="step-text">Outlast everyone and take home the grand prize.</div>
+        </div>
+      </section>
+
+      <section id="prizes" class="prize-grid">
+        <div class="panel prize-main">
+          <div class="prize-image"></div>
+          <div class="prize-copy">
+            <h3>Massive Prizes</h3>
+            <p>Compete for weekly prizes and the ultimate World Cup jackpot. This is survival football with real upside.</p>
+          </div>
+        </div>
+
+        <div class="panel money-box">
+          <h3>Weekly Prize Pool</h3>
+          <div class="money-number">$5,000</div>
+          <p>Paid out every week to the last one standing.</p>
+          <div class="mini-row"><span class="mini-icon">🗓</span><span>Fresh chances every match cycle</span></div>
+        </div>
+
+        <div class="panel money-box">
+          <h3>World Cup Jackpot</h3>
+          <div class="money-number">$100,000+</div>
+          <p>The biggest reward for the final survivor.</p>
+          <div class="mini-row"><span class="mini-icon">🏆</span><span>The ultimate football survival prize</span></div>
+        </div>
+      </section>
+
+      <section class="panel telegram-panel">
+        <div class="telegram-left">
+          <div class="telegram-art">
+            <img src="https://toshi.bet/favicon.ico" alt="Toshi mascot with megaphone vibe" />
+          </div>
+          <div class="telegram-copy">
+            <h3>Talk Football. <span>Survive Together.</span></h3>
+            <p>Join the Telegram group to talk picks, share opinions, and stay close to the Last Man Standing action.</p>
+            <div class="cta-row" style="margin-top: 8px;">
+              <a class="btn btn-primary" href="https://t.me/toshibetlms">Join Telegram Group</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="telegram-chat">
+          <div class="chat-box">
+            <div class="chat-top">
+              <div>🟦</div>
+              <div>
+                Toshi.bet - LMS Chat
+                <small>12,458 members</small>
+              </div>
+            </div>
+            <div class="chat-body">
+              <div class="bubble">Big match this week! Who are you picking?<span class="time">11:20</span></div>
+              <div class="bubble mine">I'm going with City 🔥 Let's go!<span class="time">11:21</span></div>
+              <div class="bubble">Good luck everyone! May the best survive. 💪<span class="time">11:22</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" class="panel faq">
+        <h3>FAQ</h3>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <div class="faq-question">How do I play Last Man Standing?</div>
+            <div class="faq-answer">Pick one team each round. If your team wins, you continue. If your team draws or loses, you're eliminated. You cannot reuse the same team later.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Is it free to join?</div>
+            <div class="faq-answer">Yes. The page is framed as free to play with no deposit or wagering required for entry.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">What do I win?</div>
+            <div class="faq-answer">There are weekly prizes and a much larger World Cup jackpot for the final survivor.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Where should I click to enter?</div>
+            <div class="faq-answer">Every main CTA on this page sends users directly to the official Last Man Standing page on Toshi.bet. The only exception is the Telegram group button.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="footer-cta">
+        <div class="footer-cta-inner">
+          <div>
+            <h2>Think You Have What It Takes? <span>Be The Last One Standing.</span></h2>
+            <p>Enter now and start your run at the jackpot.</p>
+          </div>
+          <div class="btn-wrap">
+            <a class="btn btn-primary" href="https://toshi.bet/last-man-standing">Play Last Man Standing →</a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <div class="footer-brand">
+          <img src="https://toshi.bet/favicon.ico" alt="Toshi.bet" />
+          <span>TOSHI.BET</span>
+        </div>
+
+        <div class="footer-links">
+          <a href="https://toshi.bet/last-man-standing">Terms of Service</a>
+          <a href="https://toshi.bet/last-man-standing">Privacy Policy</a>
+          <a href="https://toshi.bet/last-man-standing">Responsible Gaming</a>
+        </div>
+
+        <div class="footer-socials">
+          <a class="social" href="https://t.me/toshibetlms">✈</a>
+          <a class="social" href="https://toshi.bet/last-man-standing">𝕏</a>
+          <a class="social" href="https://toshi.bet/last-man-standing">◎</a>
+          <a class="social" href="https://toshi.bet/last-man-standing">▶</a>
+        </div>
+      </footer>
+    </div>
+  </main>
+</body>
+</html>
