@@ -350,14 +350,16 @@
       filter: saturate(.85);
     }
 
-   .hero-mascot {
+.hero-mascot {
   position: absolute;
-  right: 0;
-  bottom: 0;
-  height: 100%;
-  width: auto;
-  max-width: 65%;
+  right: 40px;
+  bottom: 140px;
+  width: min(520px, 52%);
+  height: auto;
+  max-height: 62%;
   object-fit: contain;
+  object-position: right center;
+  filter: drop-shadow(0 26px 52px rgba(0,0,0,.46));
   z-index: 2;
 }
 
@@ -949,7 +951,13 @@
       .hero-grid { grid-template-columns: 1fr; }
       .hero-copy { padding-bottom: 20px; }
       .hero-right { min-height: 640px; }
-      .hero-mascot { right: 50%; transform: translateX(50%); width: min(620px, 90%); }
+ .hero-mascot {
+  right: 24px;
+  bottom: 130px;
+  width: min(460px, 58%);
+  max-height: 56%;
+  transform: none;
+}
       .hero-banner { right: 24px; top: 62px; }
       .hero-prize { left: 50%; transform: translateX(-50%); }
       .stats-row { grid-template-columns: repeat(2, 1fr); }
@@ -1000,7 +1008,12 @@
       .mobile-only { display: inline-flex; }
       .hero-copy { padding-left: 16px; padding-right: 16px; }
       .hero-right { min-height: 440px; }
-      .hero-mascot { width: min(500px, 96%); bottom: 58px; }
+    .hero-mascot {
+  right: 10px;
+  bottom: 110px;
+  width: min(320px, 78%);
+  max-height: 48%;
+}
       .feature-item { grid-template-columns: 40px 1fr; gap: 12px; }
       .feature-icon { width: 40px; height: 40px; font-size: 20px; }
       .prize-main { grid-template-columns: 1fr; }
