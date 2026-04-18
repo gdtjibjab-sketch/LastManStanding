@@ -367,14 +367,18 @@ padding: 10px 10px 10px 0;
       box-shadow: var(--shadow);
     }
 
-    .stat {
-      padding: 28px 24px 24px;
-      position: relative;
-      display: flex;
-      gap: 16px;
-      align-items: center;
-      min-height: 104px;
-    }
+.stat {
+  padding: 28px 24px 24px;
+  position: relative;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  min-height: 104px;
+  min-width: 0;
+}
+    .stat > div:last-child {
+  min-width: 0;
+}
 
     .stat + .stat::before {
       content: "";
@@ -400,21 +404,21 @@ padding: 10px 10px 10px 0;
       margin-bottom: 6px;
     }
 
-    .stat-label {
-      font-size: 14px;
-      text-transform: uppercase;
-      color: #d7dfef;
-      letter-spacing: .03em;
-      font-weight: 800;
-      margin-bottom: 4px;
-    }
-
-    .stat-note {
-      font-size: 14px;
-      color: var(--muted);
-      font-weight: 600;
-    }
-
+.stat-label {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #d7dfef;
+  letter-spacing: .03em;
+  font-weight: 800;
+  margin-bottom: 4px;
+  line-height: 1.15;
+}
+  .stat-note {
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 600;
+  line-height: 1.25;
+}
     .section-title {
       text-align: center;
       margin: 20px 0 14px;
